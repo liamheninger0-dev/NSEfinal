@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Standard Elite | BYU Running Club</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+  <style>
+    :root {
+      --navy: #0d1b3e;
+      --deep-navy: #070f24;
+      --gold: #c9a84c;
+      --light-gold: #e8c97a;
+      --white: #f5f5f5;
+      --mid: #8a9cc2;
+    }
+
+```
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--deep-navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  background: rgba(7, 15, 36, 0.95);
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar-brand img { height: 52px; }
+.navbar-brand span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.nav-link {
+  color: var(--mid) !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--gold) !important; }
+.navbar-toggler { border-color: var(--gold); }
+.navbar-toggler-icon { filter: invert(1); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  background: linear-gradient(135deg, var(--deep-navy) 0%, #1a2d5a 60%, var(--navy) 100%);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+.hero-track-lines {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px, var(--gold) 60px,
+    transparent 60px, transparent 80px
+  );
+  opacity: 0.4;
+}
+.hero-logo {
+  width: clamp(160px, 22vw, 280px);
+  filter: drop-shadow(0 0 40px rgba(201,168,76,0.25));
+  animation: floatLogo 4s ease-in-out infinite;
+}
+@keyframes floatLogo {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+.hero-title span { color: var(--gold); }
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--mid);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 1rem 0 2rem;
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--deep-navy);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-gold:hover { background: var(--light-gold); transform: translateY(-2px); }
+.btn-outline-gold {
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 0.7rem 2.3rem;
+  border-radius: 2px;
+  background: transparent;
+  transition: all 0.2s;
+}
+.btn-outline-gold:hover { background: var(--gold); color: var(--deep-navy); }
+
+/* ── SECTION COMMON ── */
+section { padding: 90px 0; }
+.section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.divider {
+  width: 60px; height: 3px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+}
+
+/* ── ABOUT ── */
+#about { background: var(--navy); }
+.stat-box {
+  text-align: center;
+  padding: 2rem 1rem;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+}
+.stat-box .num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-box .label { color: var(--mid); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
+
+/* ── ATHLETES ── */
+#athletes { background: var(--deep-navy); }
+.athlete-card {
+  background: var(--navy);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s;
+}
+.athlete-card:hover { transform: translateY(-6px); border-color: var(--gold); }
+.athlete-avatar {
+  width: 100%; aspect-ratio: 1;
+  background: linear-gradient(135deg, #1a2d5a, #0d1b3e);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  color: rgba(201,168,76,0.25);
+  letter-spacing: 2px;
+}
+.athlete-body { padding: 1.5rem; }
+.athlete-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+.athlete-event { color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.75rem; }
+.athlete-desc { color: var(--mid); font-size: 0.95rem; line-height: 1.6; }
+.badge-pr {
+  display: inline-block;
+  background: rgba(201,168,76,0.12);
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+/* ── VIDEO ── */
+#video { background: var(--navy); }
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ── RESUME ── */
+#resume { background: var(--deep-navy); }
+.resume-card {
+  background: var(--navy);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+.resume-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+.resume-card .org { color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
+.resume-card .date { color: var(--mid); font-size: 0.85rem; }
+.resume-card p { color: #aab8d0; margin-top: 0.5rem; font-size: 0.95rem; }
+.skill-pill {
+  display: inline-block;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin: 4px;
+}
+
+/* ── CONTACT ── */
+#contact { background: var(--navy); }
+.contact-box {
+  background: var(--deep-navy);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  padding: 2.5rem;
+  text-align: center;
+}
+.contact-box .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+.contact-box h5 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--white); }
+.contact-box a { color: var(--mid); text-decoration: none; transition: color 0.2s; font-size: 1rem; }
+.contact-box a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep-navy);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 2rem;
+  text-align: center;
+  color: var(--mid);
+  font-size: 0.85rem;
+}
+footer a { color: var(--gold); text-decoration: none; }
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <img src="logo.jpeg" alt="New Standard Elite Logo">
+        <span>New Standard Elite</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#athletes">Athletes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#video">Video</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="scratch.html">Scratch Page</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 text-center text-lg-start order-2 order-lg-1">
+          <p class="section-label">BYU Track & Field</p>
+          <h1 class="hero-title">NEW <span>STANDARD</span> ELITE</h1>
+          <p class="hero-subtitle">Redefining What's Possible</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#athletes" class="btn btn-gold">Meet the Team</a>
+            <a href="#video" class="btn btn-outline-gold">Latest Video</a>
+          </div>
+        </div>
+        <div class="col-lg-7 text-center order-1 order-lg-2">
+          <img src="logo.jpeg" alt="New Standard Elite" class="hero-logo">
+        </div>
+      </div>
+    </div>
+    <div class="hero-track-lines"></div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">A New Standard for <span style="color:var(--gold)">Excellence</span></h2>
+          <div class="divider"></div>
+          <p style="color:#aab8d0; line-height:1.8; font-size:1.05rem;">
+            New Standard Elite is a premier distance running group representing Brigham Young University.
+            Founded on the belief that greatness is forged through relentless consistency, community, and
+            competition, NSE is home to some of the most competitive middle- and long-distance runners in the NCAA.
+          </p>
+          <p style="color:#aab8d0; line-height:1.8; font-size:1.05rem; margin-top:1rem;">
+            We train together, compete together, and push each other beyond conventional limits.
+            The name says it all — we are not here to meet the standard. We are here to set it.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-4">
+              <div class="stat-box">
+                <div class="num">3</div>
+                <div class="label">Elite Athletes</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="stat-box">
+                <div class="num">BYU</div>
+                <div class="label">University</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="stat-box">
+                <div class="num">∞</div>
+                <div class="label">Drive</div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="stat-box" style="text-align:left; padding:1.5rem 2rem;">
+                <p style="color:var(--mid); font-style:italic; font-size:1.05rem; line-height:1.7; margin:0;">
+                  "The only way to set a new standard is to stop accepting the old one."
+                </p>
+                <p style="color:var(--gold); font-size:0.85rem; letter-spacing:2px; margin-top:0.5rem;">— NSE MOTTO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATHLETES -->
+
+  <section id="athletes">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-label">The Roster</p>
+        <h2 class="section-title">Meet the <span style="color:var(--gold)">Athletes</span></h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row g-4">
+
+```
+    <!-- Tayvon -->
+    <div class="col-md-4">
+      <div class="athlete-card h-100">
+        <div class="athlete-avatar">TK</div>
+        <div class="athlete-body">
+          <div class="athlete-event">800m / 1500m</div>
+          <h3 class="athlete-name">Tayvon Kitchen</h3>
+          <p class="athlete-desc">
+            A dynamic middle-distance runner known for his devastating kick and tactical racing IQ.
+            Tayvon brings elite speed and fierce competitive instincts to every event he enters.
+          </p>
+          <div class="badge-pr">BYU Track & Field</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Isaac -->
+    <div class="col-md-4">
+      <div class="athlete-card h-100">
+        <div class="athlete-avatar">IH</div>
+        <div class="athlete-body">
+          <div class="athlete-event">1500m / Mile</div>
+          <h3 class="athlete-name">Isaac Hedengren</h3>
+          <p class="athlete-desc">
+            A relentless competitor with a smooth stride and exceptional aerobic engine.
+            Isaac's consistency and work ethic have made him one of the standout voices of
+            the New Standard Elite program.
+          </p>
+          <div class="badge-pr">BYU Track & Field</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carter -->
+    <div class="col-md-4">
+      <div class="athlete-card h-100">
+        <div class="athlete-avatar">CC</div>
+        <div class="athlete-body">
+          <div class="athlete-event">5K / 10K</div>
+          <h3 class="athlete-name">Carter Cutting</h3>
+          <p class="athlete-desc">
+            A grinder at heart, Carter thrives in the longer distances where mental fortitude
+            meets physical conditioning. His ability to surge at critical moments makes him
+            a dangerous force on any course.
+          </p>
+          <div class="badge-pr">BYU Track & Field</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- VIDEO -->
+
+  <section id="video">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5">
+          <p class="section-label">Latest Content</p>
+          <h2 class="section-title">Most Recent <span style="color:var(--gold)">Video</span></h2>
+          <div class="divider"></div>
+          <p style="color:#aab8d0; line-height:1.8;">
+            Watch the latest from New Standard Elite — training days, race coverage, and behind-the-scenes
+            content from the BYU track program.
+          </p>
+          <p style="color:var(--mid); font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; margin-top:1.5rem;">
+            <i class="bi bi-youtube me-2" style="color:var(--gold);"></i>Subscribe on YouTube
+          </p>
+        </div>
+        <div class="col-lg-7">
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="New Standard Elite — Latest Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+
+  <section id="resume">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-label">Background</p>
+        <h2 class="section-title">Team <span style="color:var(--gold)">Résumé</span></h2>
+        <div class="divider mx-auto"></div>
+        <p style="color:#aab8d0; max-width:600px; margin:1rem auto;">
+          Collective athletic background, academic achievements, and skills of the New Standard Elite program at BYU.
+        </p>
+      </div>
+
+```
+  <div class="row g-5">
+    <div class="col-lg-6">
+      <h4 style="font-family:'Bebas Neue',sans-serif; letter-spacing:3px; color:var(--gold); margin-bottom:1.5rem;">Education</h4>
+
+      <div class="resume-card">
+        <h4>Brigham Young University</h4>
+        <div class="org">Provo, Utah</div>
+        <div class="date">2021 – Present</div>
+        <p>Division I NCAA athletes competing in Track & Field and Cross Country. BYU is consistently ranked among the top programs in the Mountain West and nationally.</p>
+      </div>
+
+      <h4 style="font-family:'Bebas Neue',sans-serif; letter-spacing:3px; color:var(--gold); margin-bottom:1.5rem; margin-top:2rem;">Experience</h4>
+
+      <div class="resume-card">
+        <h4>New Standard Elite — Founding Member</h4>
+        <div class="org">New Standard Elite</div>
+        <div class="date">2023 – Present</div>
+        <p>Co-founded a running club brand and community platform to inspire the next generation of competitive runners at BYU and beyond.</p>
+      </div>
+
+      <div class="resume-card">
+        <h4>NCAA Division I Athlete</h4>
+        <div class="org">BYU Track & Field / Cross Country</div>
+        <div class="date">2021 – Present</div>
+        <p>Competed at the highest collegiate level in middle and long-distance events. Represented BYU at conference championships and national qualifying meets.</p>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <h4 style="font-family:'Bebas Neue',sans-serif; letter-spacing:3px; color:var(--gold); margin-bottom:1.5rem;">Skills & Strengths</h4>
+
+      <div class="resume-card">
+        <h4>Athletic Competencies</h4>
+        <p>Elite-level training across multiple disciplines:</p>
+        <div style="margin-top:1rem;">
+          <span class="skill-pill">Interval Training</span>
+          <span class="skill-pill">Race Strategy</span>
+          <span class="skill-pill">Tempo Runs</span>
+          <span class="skill-pill">Track Events</span>
+          <span class="skill-pill">Cross Country</span>
+          <span class="skill-pill">Strength & Conditioning</span>
+          <span class="skill-pill">Recovery Protocols</span>
+          <span class="skill-pill">Mental Performance</span>
+        </div>
+      </div>
+
+      <div class="resume-card" style="margin-top:1.5rem;">
+        <h4>Content & Branding</h4>
+        <p>Building community through storytelling and digital presence:</p>
+        <div style="margin-top:1rem;">
+          <span class="skill-pill">Social Media</span>
+          <span class="skill-pill">Brand Building</span>
+          <span class="skill-pill">Content Creation</span>
+          <span class="skill-pill">Community Leadership</span>
+          <span class="skill-pill">Public Speaking</span>
+        </div>
+      </div>
+
+      <div class="resume-card" style="margin-top:1.5rem;">
+        <h4>Honors & Recognition</h4>
+        <p>Collective achievements of the NSE roster:</p>
+        <div style="margin-top:1rem;">
+          <span class="skill-pill">Mountain West Conference</span>
+          <span class="skill-pill">All-Academic Team</span>
+          <span class="skill-pill">National Qualifier</span>
+          <span class="skill-pill">Top NCAA Performer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Contact <span style="color:var(--gold)">Us</span></h2>
+        <div class="divider mx-auto"></div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+          <div class="contact-box">
+            <div class="icon"><i class="bi bi-telephone-fill"></i></div>
+            <h5>Phone</h5>
+            <a href="tel:3855850835">(385) 585-0835</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-box">
+            <div class="icon"><i class="bi bi-envelope-fill"></i></div>
+            <h5>Email</h5>
+            <a href="mailto:NewStandardElite@gmail.com">NewStandardElite@gmail.com</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-box">
+            <div class="icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <h5>Location</h5>
+            <a href="#">BYU, Provo, Utah</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <img src="logo.jpeg" alt="NSE" style="height:36px; margin-bottom:10px; opacity:0.7;">
+    <p>© 2024 New Standard Elite · BYU Track &amp; Field · <a href="scratch.html">Scratch Page</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
