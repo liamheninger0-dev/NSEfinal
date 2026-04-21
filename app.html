@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NSE Pace Lab — New Standard Elite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0d1b3e;
+      --deep: #070f24;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --mid: #8a9cc2;
+      --card: #111d3a;
+      --white: #f0f4ff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+body {
+  background: var(--deep);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  background: rgba(7,15,36,0.97);
+  border-bottom: 2px solid var(--gold);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .brand {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--gold);
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+}
+nav a {
+  color: var(--mid);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--gold); }
+
+/* ── HERO ── */
+.app-hero {
+  text-align: center;
+  padding: 60px 2rem 40px;
+  background: linear-gradient(180deg, #0d1b3e 0%, var(--deep) 100%);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.app-hero .eyebrow {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.app-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: 3px;
+}
+.app-hero h1 span { color: var(--gold); }
+.app-hero p {
+  color: var(--mid);
+  font-size: 1rem;
+  margin-top: 1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── APP CONTAINER ── */
+.app-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+@media (max-width: 768px) { .app-wrap { grid-template-columns: 1fr; } }
+
+/* ── PANEL ── */
+.panel {
+  background: var(--card);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px;
+  padding: 2rem;
+}
+.panel h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.panel h2 span { color: var(--gold); }
+
+/* ── FORM ELEMENTS ── */
+label {
+  display: block;
+  color: var(--mid);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  margin-top: 1.2rem;
+}
+label:first-of-type { margin-top: 0; }
+
+input, select {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 4px;
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  padding: 0.6rem 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, select:focus { border-color: var(--gold); }
+select option { background: var(--navy); }
+
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── BUTTON ── */
+.calc-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  background: var(--gold);
+  color: var(--deep);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.calc-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+.calc-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── RESULTS ── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.result-box {
+  background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.result-box.highlight { border-color: var(--gold); background: rgba(201,168,76,0.12); }
+.result-box .val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1.1;
+}
+.result-box .lbl {
+  color: var(--mid);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ── AI PANEL ── */
+.ai-panel {
+  grid-column: 1 / -1;
+}
+.ai-output {
+  background: rgba(7,15,36,0.8);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  padding: 1.5rem;
+  min-height: 120px;
+  color: #aab8d0;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  position: relative;
+}
+.ai-output .placeholder {
+  color: rgba(138,156,194,0.4);
+  font-style: italic;
+}
+.ai-output.loading::after {
+  content: '';
+  display: block;
+  width: 24px; height: 24px;
+  border: 3px solid rgba(201,168,76,0.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.ai-output strong { color: var(--gold); }
+
+/* ── PACE TABLE ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+th {
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: #aab8d0;
+}
+tr:hover td { background: rgba(201,168,76,0.04); color: var(--white); }
+tr:last-child td { border-bottom: none; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  color: var(--mid);
+  font-size: 0.82rem;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ── ERROR ── */
+.error-msg {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="brand">NSE PACE LAB</span>
+    <div>
+      <a href="scratch.html">Scratch Page</a>
+      <a href="index.html">Main Site</a>
+    </div>
+  </nav>
+
+  <div class="app-hero">
+    <p class="eyebrow">New Standard Elite · Training Tools</p>
+    <h1>PACE <span>LAB</span></h1>
+    <p>Enter your race time. Get split breakdowns, equivalent performances, and an AI-generated training plan — built for BYU-level competition.</p>
+  </div>
+
+  <div class="app-wrap">
+
+```
+<!-- LEFT: INPUT -->
+<div class="panel">
+  <h2>⏱ <span>Your Race</span> Input</h2>
+
+  <label>Race Distance</label>
+  <select id="race-dist">
+    <option value="1500">1500m</option>
+    <option value="1609" selected>Mile</option>
+    <option value="3000">3000m</option>
+    <option value="5000">5K (5000m)</option>
+    <option value="10000">10K (10000m)</option>
+    <option value="21097">Half Marathon</option>
+    <option value="42195">Marathon</option>
+  </select>
+
+  <label>Finish Time</label>
+  <div class="input-row">
+    <div>
+      <input type="number" id="t-min" placeholder="Min" min="0" max="999"/>
+    </div>
+    <div>
+      <input type="number" id="t-sec" placeholder="Sec" min="0" max="59" step="0.1"/>
+    </div>
+  </div>
+
+  <label>Goal (optional)</label>
+  <select id="goal-type">
+    <option value="pr">PR — Set a new personal record</option>
+    <option value="compete">Compete — Race to podium / qualify</option>
+    <option value="build">Build — Increase aerobic base</option>
+    <option value="speed">Speed — Get faster over shorter distances</option>
+  </select>
+
+  <label>Experience Level</label>
+  <select id="exp-level">
+    <option value="beginner">Beginner (0–2 years)</option>
+    <option value="intermediate" selected>Intermediate (2–5 years)</option>
+    <option value="advanced">Advanced (5+ years / collegiate)</option>
+    <option value="elite">Elite (NCAA / post-collegiate)</option>
+  </select>
+
+  <p class="error-msg" id="err-msg">Please enter a valid time (minutes and seconds).</p>
+
+  <button class="calc-btn" onclick="calculate()">Calculate My Paces</button>
+  <button class="calc-btn" style="margin-top:0.75rem; background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid var(--gold);" onclick="generateAIPlan()">✨ Generate AI Training Plan</button>
+</div>
+
+<!-- RIGHT: RESULTS -->
+<div class="panel">
+  <h2>📊 <span>Pace</span> Breakdown</h2>
+
+  <div class="results-grid" id="results-grid">
+    <div class="result-box">
+      <div class="val" id="res-per-mile">—</div>
+      <div class="lbl">Per Mile</div>
+    </div>
+    <div class="result-box">
+      <div class="val" id="res-per-km">—</div>
+      <div class="lbl">Per KM</div>
+    </div>
+    <div class="result-box">
+      <div class="val" id="res-per-400">—</div>
+      <div class="lbl">Per 400m</div>
+    </div>
+    <div class="result-box">
+      <div class="val" id="res-mph">—</div>
+      <div class="lbl">Avg MPH</div>
+    </div>
+  </div>
+
+  <table id="splits-table">
+    <thead>
+      <tr>
+        <th>Split</th>
+        <th>Even Pace</th>
+        <th>Negative Split</th>
+      </tr>
+    </thead>
+    <tbody id="splits-body">
+      <tr>
+        <td colspan="3" style="text-align:center; color:rgba(138,156,194,0.4); font-style:italic;">
+          Enter a time and click Calculate
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- BOTTOM: AI TRAINING PLAN -->
+<div class="panel ai-panel">
+  <h2>🤖 <span>AI</span> Training Plan</h2>
+  <div class="ai-output" id="ai-output">
+    <span class="placeholder">Click "Generate AI Training Plan" above to get a personalized weekly training plan based on your race time, goals, and experience level.</span>
+  </div>
+</div>
+```
+
+  </div>
+
+  <footer>
+    <p>NSE Pace Lab · <a href="scratch.html">Scratch Page</a> · <a href="index.html">Main Site</a> · New Standard Elite © 2024</p>
+  </footer>
+
+  <script>
+    function getTotalSeconds() {
+      const min = parseFloat(document.getElementById('t-min').value) || 0;
+      const sec = parseFloat(document.getElementById('t-sec').value) || 0;
+      if (min === 0 && sec === 0) return null;
+      return min * 60 + sec;
+    }
+
+    function fmtTime(totalSecs) {
+      if (!totalSecs || totalSecs <= 0) return '—';
+      const m = Math.floor(totalSecs / 60);
+      const s = (totalSecs % 60).toFixed(1).padStart(4, '0');
+      return m > 0 ? `${m}:${s}` : `${s}s`;
+    }
+
+    function fmtTimeShort(totalSecs) {
+      if (!totalSecs || totalSecs <= 0) return '—';
+      const m = Math.floor(totalSecs / 60);
+      const s = Math.round(totalSecs % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function calculate() {
+      const total = getTotalSeconds();
+      const dist = parseInt(document.getElementById('race-dist').value);
+      const errEl = document.getElementById('err-msg');
+
+      if (!total || total <= 0) {
+        errEl.style.display = 'block';
+        return;
+      }
+      errEl.style.display = 'none';
+
+      const perMeter = total / dist;
+      const perMile  = perMeter * 1609.34;
+      const perKm    = perMeter * 1000;
+      const per400   = perMeter * 400;
+      const mph      = 1609.34 / perMile;
+
+      document.getElementById('res-per-mile').textContent = fmtTime(perMile);
+      document.getElementById('res-per-km').textContent   = fmtTime(perKm);
+      document.getElementById('res-per-400').textContent  = fmtTime(per400);
+      document.getElementById('res-mph').textContent      = mph.toFixed(2);
+
+      // Generate splits
+      const splitsBody = document.getElementById('splits-body');
+      splitsBody.innerHTML = '';
+
+      const splitPoints = getSplitPoints(dist);
+      splitPoints.forEach(({ label, meters }) => {
+        const evenTime  = perMeter * meters;
+        const negFactor = meters < dist * 0.5 ? 1.03 : 0.97;
+        const negTime   = perMeter * meters * negFactor;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${label}</td>
+          <td>${fmtTimeShort(evenTime)}</td>
+          <td>${fmtTimeShort(negTime)}</td>
+        `;
+        splitsBody.appendChild(row);
+      });
+    }
+
+    function getSplitPoints(dist) {
+      if (dist <= 1609) {
+        return [
+          { label: '200m',  meters: 200  },
+          { label: '400m',  meters: 400  },
+          { label: '600m',  meters: 600  },
+          { label: '800m',  meters: 800  },
+          { label: 'Finish', meters: dist },
+        ];
+      } else if (dist <= 5000) {
+        return [
+          { label: '1K',    meters: 1000 },
+          { label: '2K',    meters: 2000 },
+          { label: '3K',    meters: 3000 },
+          { label: '4K',    meters: 4000 },
+          { label: 'Finish', meters: dist },
+        ];
+      } else if (dist <= 10000) {
+        return [
+          { label: '2K',    meters: 2000  },
+          { label: '5K',    meters: 5000  },
+          { label: '8K',    meters: 8000  },
+          { label: 'Finish', meters: dist },
+        ];
+      } else {
+        return [
+          { label: '5K',   meters: 5000  },
+          { label: '10K',  meters: 10000 },
+          { label: 'Half', meters: 21097 },
+          { label: 'Finish', meters: dist },
+        ];
+      }
+    }
+
+    async function generateAIPlan() {
+      const total = getTotalSeconds();
+      const dist  = document.getElementById('race-dist').value;
+      const distName = document.getElementById('race-dist').selectedOptions[0].text;
+      const goal  = document.getElementById('goal-type').selectedOptions[0].text;
+      const level = document.getElementById('exp-level').selectedOptions[0].text;
+      const errEl = document.getElementById('err-msg');
+
+      if (!total || total <= 0) {
+        errEl.style.display = 'block';
+        return;
+      }
+      errEl.style.display = 'none';
+
+      const aiOut = document.getElementById('ai-output');
+      aiOut.textContent = '';
+      aiOut.classList.add('loading');
+
+      const timeStr = fmtTime(total);
+      const prompt = `You are a college distance running coach at BYU for an elite group called New Standard Elite. A runner just entered the following data:
+- Race distance: ${distName}
+- Finish time: ${timeStr}
+- Goal: ${goal}
+- Experience: ${level}
+
+Write a personalized 7-day training plan for this athlete to improve toward their goal. Include:
+1. A brief assessment of their current fitness (2-3 sentences max)
+2. A day-by-day training plan (Monday through Sunday) with specific workouts, distances, and paces
+3. Two key tips for them to focus on
+
+Format it clearly with bold headers for each day. Keep it practical and motivating. Use running terminology appropriate for their level.`;
+
+      try {
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514',
+            max_tokens: 1000,
+            messages: [{ role: 'user', content: prompt }]
+          })
+        });
+
+        const data = await response.json();
+        aiOut.classList.remove('loading');
+
+        const text = data.content?.map(b => b.text || '').join('') || 'No response received.';
+        renderMarkdown(aiOut, text);
+      } catch (err) {
+        aiOut.classList.remove('loading');
+        aiOut.textContent = 'Error generating plan. Please try again.';
+        console.error(err);
+      }
+    }
+
+    function renderMarkdown(el, text) {
+      // Simple markdown-to-HTML
+      let html = text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/^### (.+)$/gm, '<h4 style="color:var(--gold);font-family:Bebas Neue,sans-serif;letter-spacing:2px;margin:1rem 0 0.3rem;">$1</h4>')
+        .replace(/^## (.+)$/gm, '<h3 style="color:var(--gold);font-family:Bebas Neue,sans-serif;letter-spacing:2px;margin:1.2rem 0 0.4rem;">$1</h3>')
+        .replace(/^# (.+)$/gm, '<h2 style="color:var(--gold);font-family:Bebas Neue,sans-serif;letter-spacing:2px;margin:1.5rem 0 0.5rem;">$1</h2>')
+        .replace(/^\d+\. (.+)$/gm, '<p style="margin-left:1rem;">• $1</p>')
+        .replace(/^- (.+)$/gm, '<p style="margin-left:1rem;color:var(--mid);">· $1</p>')
+        .replace(/\n\n/g, '</p><p style="margin-top:0.5rem;">')
+        .replace(/\n/g, '<br/>');
+      el.innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
