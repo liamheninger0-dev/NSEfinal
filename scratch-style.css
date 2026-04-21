@@ -1,0 +1,395 @@
+/* ============================================================
+   New Standard Elite — Scratch Page Stylesheet
+   Custom CSS (no Bootstrap)
+   ============================================================ */
+
+/* CSS Variables */
+:root {
+  --navy: #0d1b3e;
+  --deep-navy: #070f24;
+  --gold: #c9a84c;
+  --light-gold: #e8c97a;
+  --white: #f0f4ff;
+  --mid: #8a9cc2;
+  --dark-mid: #4a5a7a;
+  --card-bg: #111d3a;
+}
+
+/* ── RESET & BASE ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--deep-navy);
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(26,45,90,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(201,168,76,0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--white);
+  font-family: 'Barlow', Georgia, sans-serif;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  letter-spacing: 3px;
+  color: var(--white);
+}
+
+h1 { font-size: clamp(3rem, 10vw, 6.5rem); line-height: 0.9; }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; }
+h3 { font-size: 1.8rem; letter-spacing: 2px; }
+h4 { font-size: 1.2rem; letter-spacing: 2px; }
+
+p { color: #aab8d0; margin-bottom: 1rem; }
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover { color: var(--light-gold); }
+
+/* ── NAVBAR ── */
+.scratch-nav {
+  background: rgba(7, 15, 36, 0.96);
+  border-bottom: 2px solid var(--gold);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.scratch-nav .brand {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--gold);
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+}
+
+.scratch-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.scratch-nav ul li a {
+  color: var(--mid);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.scratch-nav ul li a:hover { color: var(--gold); }
+
+/* ── HERO SECTION ── */
+.scratch-hero {
+  min-height: 85vh;
+  background:
+    linear-gradient(180deg, rgba(7,15,36,0.4) 0%, rgba(7,15,36,0.85) 100%),
+    url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1600&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scratch-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px, var(--gold) 40px,
+    transparent 40px, transparent 60px
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.hero-eyebrow {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+  color: var(--mid);
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ── BUTTONS ── */
+.btn-primary-scratch {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep-navy);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 0.8rem 2.5rem;
+  border-radius: 2px;
+  margin: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-primary-scratch:hover {
+  background: var(--light-gold);
+  color: var(--deep-navy);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-scratch {
+  display: inline-block;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 0.75rem 2.3rem;
+  border-radius: 2px;
+  margin: 0.5rem;
+  transition: all 0.2s;
+}
+.btn-secondary-scratch:hover {
+  background: var(--gold);
+  color: var(--deep-navy);
+}
+
+/* ── SECTIONS ── */
+section.scratch-section {
+  padding: 80px 5%;
+}
+
+section.scratch-section.alt {
+  background: var(--navy);
+}
+
+.section-label-scratch {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+}
+
+.gold-line {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 1.2rem 0;
+}
+
+/* ── DIV LAYOUT: GRID CONTAINERS ── */
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.three-col-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── ANCHOR SECTION ── */
+#training-anchor {
+  scroll-margin-top: 80px;
+}
+
+/* ── LISTS ── */
+.training-list {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  color: #aab8d0;
+}
+
+.training-list > li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--white);
+}
+
+.training-list > li ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.training-list > li ul li {
+  color: var(--mid);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+/* ── ATHLETE CARD (scratch) ── */
+.scratch-athlete-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-top: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 2rem 1.5rem;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.scratch-athlete-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+
+.scratch-athlete-card .initials {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: rgba(201,168,76,0.3);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.scratch-athlete-card h3 {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.scratch-athlete-card .event {
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.scratch-athlete-card p { font-size: 0.9rem; }
+
+/* ── IMAGE ── */
+.club-image {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(201,168,76,0.15);
+  object-fit: cover;
+  display: block;
+}
+
+/* ── VIDEO EMBED ── */
+.video-embed-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid rgba(201,168,76,0.25);
+}
+
+.video-embed-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ── TABLEAU ── */
+.tableau-container {
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  background: var(--card-bg);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+/* ── CONTACT (scratch) ── */
+.contact-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contact-item {
+  background: var(--card-bg);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 6px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+  min-width: 220px;
+  flex: 1;
+}
+
+.contact-item .c-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.contact-item h4 {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.contact-item a { color: var(--mid); }
+.contact-item a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+.scratch-footer {
+  background: var(--deep-navy);
+  border-top: 2px solid var(--gold);
+  text-align: center;
+  padding: 2rem;
+  color: var(--mid);
+  font-size: 0.85rem;
+}
+
+/* ── ANCHOR HIGHLIGHT ── */
+.anchor-link {
+  display: inline-block;
+  color: var(--gold);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  transition: border-color 0.2s;
+}
+.anchor-link:hover { border-color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .two-col-layout,
+  .three-col-layout {
+    grid-template-columns: 1fr;
+  }
+  .scratch-nav ul { gap: 1rem; }
+}
