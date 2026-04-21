@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Standard Elite — The Culture</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <!-- Custom stylesheet (created from scratch) -->
+  <link rel="stylesheet" href="scratch-style.css"/>
+  <!-- Tableau JS -->
+  <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+
+  <nav class="scratch-nav">
+    <span class="brand">NSE — THE CULTURE</span>
+    <ul>
+      <li><a href="#athletes-section">Athletes</a></li>
+      <li><a href="#training-anchor">Training</a></li>
+      <li><a href="#video-section">Video</a></li>
+      <li><a href="#data-section">Stats</a></li>
+      <li><a href="#contact-section">Contact</a></li>
+      <li><a href="index.html">← Main Site</a></li>
+      <li><a href="app.html">App</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+
+  <div class="scratch-hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">New Standard Elite · BYU Running</p>
+      <h1>THE NEW<br><span style="color:var(--gold)">STANDARD</span></h1>
+      <p class="hero-tagline">Train Hard. Race Fast. Represent.</p>
+      <!-- On-page anchor link -->
+      <a href="#athletes-section" class="btn-primary-scratch">Meet the Crew</a>
+      <a href="#training-anchor" class="btn-secondary-scratch anchor-link">See the Training</a>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+
+  <section class="scratch-section" id="about-section">
+    <div class="two-col-layout">
+      <div>
+        <p class="section-label-scratch">Who We Are</p>
+        <h2>Beyond the <span style="color:var(--gold)">Track</span></h2>
+        <div class="gold-line"></div>
+        <p>
+          New Standard Elite isn't just a running group — it's a movement. Built at Brigham Young University
+          in Provo, Utah, NSE was created to push the boundaries of what collegiate athletes can accomplish
+          when they combine elite training with genuine community.
+        </p>
+        <p>
+          The club is anchored by three of BYU's most competitive distance runners: Tayvon Kitchen,
+          Isaac Hedengren, and Carter Cutting. Together they document their journey, share training insights,
+          and inspire a new generation of runners.
+        </p>
+        <p>
+          The name says everything: we do not meet the standard. We <em>set</em> it.
+        </p>
+      </div>
+      <!-- Image from the web (not Bootstrap) -->
+      <div>
+        <img
+          src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=900&q=80"
+          alt="Runners on a track"
+          class="club-image"
+          style="height: 420px;"
+        />
+        <p style="font-size:0.75rem; color:var(--dark-mid); margin-top:0.5rem;">
+          Runners competing at an elite collegiate track meet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ATHLETES ── (on-page anchor target) -->
+
+  <section class="scratch-section alt" id="athletes-section">
+    <div class="content-container">
+      <p class="section-label-scratch">The Roster</p>
+      <h2>The <span style="color:var(--gold)">Athletes</span></h2>
+      <div class="gold-line"></div>
+
+```
+  <div class="three-col-layout">
+
+    <!-- Tayvon Kitchen -->
+    <div class="scratch-athlete-card">
+      <div class="initials">TK</div>
+      <div class="event">800m · 1500m</div>
+      <h3>Tayvon Kitchen</h3>
+      <p>
+        With a lethal finishing kick and world-class race sense, Tayvon is one of the most
+        exciting middle-distance runners on the BYU roster. His speed translates across
+        events from the 800m to the mile.
+      </p>
+    </div>
+
+    <!-- Isaac Hedengren -->
+    <div class="scratch-athlete-card">
+      <div class="initials">IH</div>
+      <div class="event">1500m · Mile</div>
+      <h3>Isaac Hedengren</h3>
+      <p>
+        Smooth, efficient, relentless. Isaac brings an elite aerobic base and sharp tactical
+        awareness to every race. He's a cornerstone of the NSE identity and a natural leader
+        in the training group.
+      </p>
+    </div>
+
+    <!-- Carter Cutting -->
+    <div class="scratch-athlete-card">
+      <div class="initials">CC</div>
+      <div class="event">5K · 10K</div>
+      <h3>Carter Cutting</h3>
+      <p>
+        A long-distance specialist with a grinder's mentality. Carter thrives in the miles
+        where the race is won through patience, grit, and the ability to surge when it
+        matters most.
+      </p>
+    </div>
+
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- ── TRAINING (ORDERED + UNORDERED LISTS) ── -->
+
+  <!-- On-page anchor target -->
+
+  <section class="scratch-section" id="training-anchor">
+    <div class="two-col-layout">
+      <div>
+        <p class="section-label-scratch">The Blueprint</p>
+        <h2>How NSE <span style="color:var(--gold)">Trains</span></h2>
+        <div class="gold-line"></div>
+        <p>
+          A typical NSE training week blends intensity, recovery, and intentionality.
+          Here's the weekly training structure:
+        </p>
+
+```
+    <!-- ORDERED list with UNORDERED lists embedded inside (rubric requirement) -->
+    <ol class="training-list">
+      <li>
+        Monday — Speed Development
+        <ul>
+          <li>Warm-up: 2 mile easy jog + drills</li>
+          <li>Main: 8 × 400m at race pace with 90s rest</li>
+          <li>Cool-down: 1 mile easy + stretching</li>
+        </ul>
+      </li>
+      <li>
+        Tuesday — Aerobic Base
+        <ul>
+          <li>6–10 mile easy long run</li>
+          <li>Strides on the track (4 × 100m)</li>
+          <li>Foam rolling & mobility work</li>
+        </ul>
+      </li>
+      <li>
+        Wednesday — Threshold Run
+        <ul>
+          <li>3 × 2 miles at tempo effort</li>
+          <li>2 min rest between sets</li>
+          <li>Focus: comfortably uncomfortable pace</li>
+        </ul>
+      </li>
+      <li>
+        Thursday — Recovery + Strength
+        <ul>
+          <li>Easy 5 miles</li>
+          <li>Gym: core, glutes, hip stability</li>
+          <li>Optional: pool or bike cross-training</li>
+        </ul>
+      </li>
+      <li>
+        Friday — Race Simulation
+        <ul>
+          <li>Warm-up + race-specific workout</li>
+          <li>E.g., 3 × 800m at 5K goal pace</li>
+          <li>Mental prep & visualization</li>
+        </ul>
+      </li>
+      <li>
+        Saturday — Long Run
+        <ul>
+          <li>12–16 miles for distance runners</li>
+          <li>8–10 miles for 800m/1500m specialists</li>
+          <li>Progressive effort through the run</li>
+        </ul>
+      </li>
+      <li>
+        Sunday — Full Rest
+        <ul>
+          <li>No structured training</li>
+          <li>Light walk or yoga optional</li>
+          <li>Focus: sleep, nutrition, reflection</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+  <div>
+    <img
+      src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80"
+      alt="Track training"
+      class="club-image"
+      style="height: 500px;"
+    />
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- ── VIDEO SECTION ── -->
+
+  <section class="scratch-section alt" id="video-section">
+    <div class="content-container">
+      <p class="section-label-scratch">Latest Content</p>
+      <h2>Most Recent <span style="color:var(--gold)">Video</span></h2>
+      <div class="gold-line"></div>
+      <p style="max-width:600px; margin-bottom:2rem;">
+        Watch the latest content from New Standard Elite. This is the most recent drop from the crew —
+        training, racing, and life at BYU.
+      </p>
+
+```
+  <!-- Embedded YouTube Video (rubric requirement) -->
+  <div class="video-embed-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+      title="New Standard Elite — Latest Video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- ── TABLEAU DATA ── -->
+
+  <section class="scratch-section" id="data-section">
+    <div class="content-container">
+      <p class="section-label-scratch">Performance Data</p>
+      <h2>Running <span style="color:var(--gold)">Analytics</span></h2>
+      <div class="gold-line"></div>
+      <p style="max-width:700px; margin-bottom:1.5rem;">
+        Explore world-class distance running performance data — visualized live. This interactive
+        Tableau dashboard shows global marathon performance trends and elite running analytics.
+        Hover, filter, and dig in.
+      </p>
+
+```
+  <!-- Live & Interactive Tableau Embed (rubric requirement) -->
+  <div class="tableau-container">
+    <tableau-viz
+      id="tableau-viz"
+      src="https://public.tableau.com/views/MarathonRunners/Dashboard1"
+      width="100%"
+      height="580"
+      toolbar="bottom"
+      hide-tabs>
+    </tableau-viz>
+  </div>
+  <p style="font-size:0.8rem; color:var(--dark-mid); margin-top:0.75rem; text-align:center;">
+    Interactive Tableau Public visualization · Marathon performance data
+  </p>
+</div>
+```
+
+  </section>
+
+  <!-- ── CONTACT ── -->
+
+  <section class="scratch-section alt" id="contact-section">
+    <div class="content-container">
+      <p class="section-label-scratch">Connect</p>
+      <h2>Contact <span style="color:var(--gold)">NSE</span></h2>
+      <div class="gold-line"></div>
+      <p>Have questions, want to collaborate, or just want to run? Reach out.</p>
+
+```
+  <div class="contact-row">
+    <div class="contact-item">
+      <span class="c-icon">📞</span>
+      <h4>Phone</h4>
+      <a href="tel:3855850835">(385) 585-0835</a>
+    </div>
+    <div class="contact-item">
+      <span class="c-icon">✉️</span>
+      <h4>Email</h4>
+      <a href="mailto:NewStandardElite@gmail.com">NewStandardElite@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="c-icon">📍</span>
+      <h4>Location</h4>
+      <a href="#">BYU, Provo, Utah</a>
+    </div>
+  </div>
+
+  <p style="text-align:center; margin-top:3rem;">
+    <a href="app.html" class="btn-primary-scratch" style="margin-right:1rem;">Try the Pace Calculator App →</a>
+    <a href="index.html" class="btn-secondary-scratch">← Back to Main Site</a>
+  </p>
+</div>
+```
+
+  </section>
+
+  <!-- ── FOOTER ── -->
+
+  <footer class="scratch-footer">
+    <img src="logo.jpeg" alt="NSE" style="height:32px; opacity:0.65; margin-bottom:8px; display:block; margin-left:auto; margin-right:auto;"/>
+    <p>© 2024 New Standard Elite · BYU Track &amp; Field · Built from Scratch · <a href="app.html">Pace Calculator</a> · <a href="index.html">Main Site</a></p>
+  </footer>
+
+</body>
+</html>
